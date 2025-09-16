@@ -1,5 +1,7 @@
 fastapi
-uvicorn[standard]
-python-dotenv
-aiofiles
+uvicorn
 python-multipart
+python-dotenv
+Jinja2
+aiofiles
+watchgod

@@ -27,7 +27,23 @@ from fastapi import BackgroundTasks, FastAPI, HTTPException, Response
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
-from . import content_optimizer, media_processor, thumbnail_generator
+"""
+Import modules from the current directory as top‑level modules.
+
+When `uvicorn main:app` is run from within the ``backend`` directory, Python
+executes ``main.py`` as a top‑level script (not as part of a package). Relative
+imports such as ``from . import content_optimizer`` therefore raise an
+``ImportError`` saying "attempted relative import with no known parent package".
+
+To avoid this issue, the modules ``content_optimizer``, ``media_processor`` and
+``thumbnail_generator`` are imported as top‑level modules. This allows the
+FastAPI application to be run from the ``backend`` directory without needing
+special ``PYTHONPATH`` configuration.
+"""
+
+import content_optimizer
+import media_processor
+import thumbnail_generator
 
 
 app = FastAPI(title="Cola‑Link‑e‑Pronto API", version="1.0.0")
